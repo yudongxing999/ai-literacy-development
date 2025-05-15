@@ -1,54 +1,172 @@
-Personalized Learning System
-This repository contains a Python implementation of a Personalized Learning System. The system collects data from learning management systems (LMS), mobile apps, AI assistants, and assessments, analyzes this data to generate insights, and provides decision support for personalized teaching interventions. It aims to optimize learning outcomes by tailoring educational resources and strategies to individual learners.
-Features
+# AI Literacy Development Framework for Chinese Language Education
 
-Data Collection: Gathers learning data from multiple sources including LMS, mobile apps, AI assistants, and assessments.
-Data Analysis: Performs descriptive, diagnostic, predictive, and prescriptive analyses to uncover learning patterns and generate insights.
-Decision Support: Transforms analysis results into actionable teaching decisions and recommendations, including learning reports, intervention suggestions, and resource recommendations.
-Teaching Implementation: Executes personalized teaching interventions by adjusting learning resources, optimizing teaching strategies, and providing targeted learning support.
+This repository contains a comprehensive set of Python modules designed to support AI literacy development for international Chinese language teachers and enhance Chinese language teaching through AI integration. The framework is based on extensive research on AI applications in language education, teacher professional development, and innovative teaching strategies.
 
-The system is structured into four main modules:
+## 📋 Overview
 
-DataCollector: Collects data from various sources.
-DataAnalyzer: Analyzes the collected data to generate insights.
-DecisionSupport: Provides actionable recommendations based on the analysis.
-TeachingImplementation: Implements the personalized teaching strategies.
+This project provides tools and frameworks for:
+- Assessing and developing teacher AI literacy
+- Designing AI-enhanced teaching activities based on Bloom's Taxonomy
+- Implementing active learning strategies with AI support
+- Developing comprehensive language skills (listening, speaking, reading, writing) with AI assistance
+- Creating personalized learning experiences through data analysis
+- Generating intelligent teaching resources and providing automated feedback
 
-The main class PersonalizedLearningSystem integrates these modules to provide a complete workflow for personalized learning.
-Dependencies
-The project requires the following Python libraries:
+The framework aims to bridge the gap between AI technology and pedagogical practice in international Chinese language education, promoting effective and ethical use of AI tools by language teachers.
 
-pandas
-numpy
-scikit-learn
-matplotlib
-seaborn
-nltk (with 'vader_lexicon')
-tensorflow (though not used in the demo)
+## 🧩 Repository Components
 
-You can install these using pip:
-pip install pandas numpy scikit-learn matplotlib seaborn nltk tensorflow
+### Core Modules
 
-Additionally, for nltk, you need to download the 'vader_lexicon':
-import nltk
-nltk.download('vader_lexicon')
+- **`teacher_ai_literacy_assessment.py`**: A four-dimensional assessment system for evaluating teacher AI literacy based on AI basic cognition, AI tool application, AI instructional design, and AI ethics.
 
-Usage
-This project is written in Python 3.x. Ensure you are using Python 3 when running the script.
-To run the demonstration of the system:
+- **`bloom_ai_teaching_design.py`**: Integration of Bloom's Cognitive Taxonomy with AI teaching applications, providing a framework for designing learning activities across all cognitive levels.
 
-Ensure all dependencies are installed.
-Run the script:
+- **`ai_active_learning_strategies.py`**: Implementation of four active learning strategies: AI-assisted inquiry-based learning, immersive cultural experiences, collaborative problem-solving, and adaptive microlearning.
 
-python personalized-learning-system.py
+- **`ai_language_skills_system.py`**: A comprehensive system for developing listening, speaking, reading, and writing skills with AI support, including learning activity templates and tools for each skill.
 
-The demo will process a simulated user and display a summary of the results, including intervention suggestions, resource adjustments, strategies applied, and support activities.
-For actual deployment, you would need to:
+- **`personalized-learning-system.py`**: A data-driven system implementing the "collection-analysis-decision-implementation" closed-loop model for personalized learning.
 
-Configure the database connection in the DB_CONFIG dictionary with your actual database credentials.
-Replace the simulated data collection methods with real API calls or database queries to fetch actual data from LMS, mobile apps, AI assistants, and assessment systems.
+### Supplementary Modules
 
-Logging
-The system logs all activities to "personalized_learning_system.log" and the console. Ensure you have write permissions for the directory where the script is run.
-Note
-This is a demonstration version using simulated data. For real-world application, integration with actual data sources is required.
+- **`# 国际中文教学资源智能生成系统核心代码.py`**: Core system for intelligent generation of Chinese teaching resources, including graded reading materials, situational dialogues, and grammar exercises.
+
+- **`# 智能语言评估与反馈系统核心代码.py`**: Intelligent language assessment and feedback system for evaluating language performance and providing personalized guidance.
+
+## 💻 Installation and Usage
+
+### Prerequisites
+- Python 3.8+
+- Required libraries: pandas, numpy, matplotlib, scikit-learn, seaborn, nltk, tensorflow
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/yudongxing999/ai-literacy-development.git
+cd ai-literacy-development
+
+# Install required dependencies
+pip install -r requirements.txt
+```
+
+### Usage Examples
+
+#### Teacher AI Literacy Assessment
+```python
+from teacher_ai_literacy_assessment import TeacherAILiteracyAssessment
+
+# Initialize the assessment system
+assessment_system = TeacherAILiteracyAssessment()
+
+# Create assessment form
+form_file = assessment_system.create_assessment_form()
+print(f"Assessment form created: {form_file}")
+
+# Process assessment results for a teacher
+result = assessment_system.process_assessment("completed_assessment.csv", "T12345")
+
+# Generate assessment report
+report_file = assessment_system.generate_report("T12345")
+print(f"Assessment report generated: {report_file}")
+
+# Visualize assessment results
+chart_file = assessment_system.visualize_assessment("T12345")
+print(f"Assessment visualization created: {chart_file}")
+```
+
+#### AI-Enhanced Language Teaching Design
+```python
+from bloom_ai_teaching_design import BloomAITeachingDesign
+
+# Initialize the design model
+model = BloomAITeachingDesign()
+
+# Create a new teaching design
+design = model.create_lesson_design(
+    title="Character Structure Analysis", 
+    content_type="Characters", 
+    content="Phonetic-semantic compounds", 
+    primary_level="Analysis",
+    hsk_level=4,
+    duration=45
+)
+
+# Export design as markdown
+md_file = model.export_design(design_id, "markdown")
+print(f"Teaching design exported as Markdown: {md_file}")
+
+# Visualize the design
+vis_file = model.visualize_design(design_id)
+print(f"Design visualization created: {vis_file}")
+```
+
+#### Language Skills Development
+```python
+from ai_language_skills_system import AILanguageSkillsSystem
+
+# Initialize the system
+skills_system = AILanguageSkillsSystem()
+
+# Create a listening skill development plan
+listening_plan = skills_system.create_skill_plan(
+    title="Business Communication Listening Skills",
+    skill_type="听力",
+    hsk_level=4,
+    focus_area="Business Communication",
+    duration_weeks=4,
+    sessions_per_week=2,
+    minutes_per_session=45
+)
+
+# Export plan to markdown
+md_file = skills_system.export_plan(plan_id, "markdown")
+print(f"Skill development plan exported: {md_file}")
+
+# Visualize the plan
+vis_file = skills_system.visualize_plan(plan_id)
+print(f"Plan visualization created: {vis_file}")
+```
+
+## 🔍 Theoretical Background
+
+This framework is based on extensive research on AI in education, particularly in language teaching contexts. Key theoretical foundations include:
+
+1. **Four-Dimensional AI Literacy Framework**: Encompasses AI basic cognition, AI tool application, AI instructional design, and AI ethics and criticism.
+
+2. **Bloom's Taxonomy Integration with AI**: Mapping AI applications to different cognitive levels (remembering, understanding, applying, analyzing, evaluating, creating).
+
+3. **Data-Driven Personalized Learning**: Implementing a "collection-analysis-decision-implementation" closed-loop system for personalized education.
+
+4. **Teacher Role Transformation**: Supporting teacher transition from knowledge transmitter to learning designer, from evaluator to learning facilitator, from independent worker to collaborator, and from technology user to technology leader.
+
+5. **AI-Enhanced Active Learning Strategies**: Frameworks for inquiry-based learning, immersive cultural experiences, collaborative problem-solving, and adaptive microlearning.
+
+For more detailed information, please refer to the academic paper "Teacher AI Literacy and the Future of Language Education" included in the repository.
+
+## 📊 Visual Frameworks
+
+The repository includes visualization tools for key frameworks:
+
+- AI Literacy Assessment Framework
+- Bloom's AI Teaching Design Model
+- AI-Enhanced Language Skills Development
+- AI-Supported Personalized Learning Model
+- Teacher-AI Collaboration Model
+
+## 🔄 Contributing
+
+Contributions to this project are welcome! Please feel free to submit issues, fork the repository and submit pull requests.
+
+## 📜 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgments
+
+This work is based on research in AI literacy for international Chinese language teachers and AI applications in language education. Special thanks to the researchers and educators who contributed to the theoretical foundations of this framework.
+
+---
+
+For questions or support, please open an issue in this repository.
