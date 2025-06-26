@@ -8,12 +8,28 @@ from datetime import datetime
 
 # 配置OpenAI API
 openai.api_key = os.getenv("OPENAI_API_KEY")
+if openai.api_key is None:
+    raise ValueError("OPENAI_API_KEY environment variable not set")
 
 class ChineseTeachingAssistant:
     """国际中文教学资源智能生成系统"""
     
-    def __init__(self):
-        self.system_prompt = """
+    def _call_gpt(self, prompt):
+        try:
+            response = openai.ChatCompletion.create(
+                model=os.getenv("OPENAI_MODEL", "gpt-4"),  # allow override with env var
+                messages=[
+                    {"role": "system", "content": self.system_prompt},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.7,
+                max_tokens=2000
+            )
+            return response.choices[0].message.content
+        except Exception as e:
+            # Optionally print/log the error
+            print(f"GPT error: {e}")
+            return f"生成内容时出错: {str(e)}"
         你是一位经验丰富的国际中文教师，精通中文教学和教学资源设计。
         你将帮助教师生成高质量的中文教学资源，包括分级阅读材料、情境对话、语法练习、
         文化主题内容和评估测试。请确保内容符合目标学习者的水平，文化敏感且有教育价值。
