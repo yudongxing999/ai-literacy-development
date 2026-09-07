@@ -30,9 +30,9 @@ The framework aims to bridge the gap between AI technology and pedagogical pract
 
 ### Supplementary Modules
 
-- **`# 国际中文教学资源智能生成系统核心代码.py`**: Core system for intelligent generation of Chinese teaching resources, including graded reading materials, situational dialogues, and grammar exercises.
+- **`chinese_teaching_resource_generator.py`**: Core system for intelligent generation of Chinese teaching resources, including graded reading materials, situational dialogues, and grammar exercises.
 
-- **`# 智能语言评估与反馈系统核心代码.py`**: Intelligent language assessment and feedback system for evaluating language performance and providing personalized guidance.
+- **`chinese_language_assessment.py`**: Intelligent language assessment and feedback system for evaluating language performance and providing personalized guidance.
 
 ## 💻 Installation and Usage
 
@@ -88,10 +88,13 @@ design = model.create_lesson_design(
     title="Character Structure Analysis", 
     content_type="Characters", 
     content="Phonetic-semantic compounds", 
-    primary_level="Analysis",
+    primary_level="分析",
     hsk_level=4,
     duration=45
 )
+
+# Get design_id from the design library
+design_id = list(model.design_library.keys())[-1]
 
 # Export design as markdown
 md_file = model.export_design(design_id, "markdown")
@@ -119,6 +122,9 @@ listening_plan = skills_system.create_skill_plan(
     sessions_per_week=2,
     minutes_per_session=45
 )
+
+# Get plan_id from the activity library
+plan_id = list(skills_system.activity_library.keys())[-1]
 
 # Export plan to markdown
 md_file = skills_system.export_plan(plan_id, "markdown")
